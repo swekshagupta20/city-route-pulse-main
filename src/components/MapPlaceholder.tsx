@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Map, MapPin, Navigation, Loader2 } from 'lucide-react';
+import { Map, Navigation, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface MapPlaceholderProps {
@@ -8,24 +8,9 @@ interface MapPlaceholderProps {
 }
 
 const MapPlaceholder = ({ selectedBus, refreshTimer }: MapPlaceholderProps) => {
-  const busStops = [
-    { name: "Sector 10 Hub", lat: 28.7041, lng: 77.1025, type: "source" },
-    { name: "Mall Road Junction", lat: 28.6892, lng: 77.1125, type: "current" },
-    { name: "University Campus", lat: 28.6745, lng: 77.1225, type: "regular" },
-    { name: "Central Station", lat: 28.6598, lng: 77.1325, type: "destination" }
-  ];
-
-  const getStopColor = (type: string) => {
-    switch (type) {
-      case 'source': return 'success';
-      case 'current': return 'primary';
-      case 'destination': return 'danger';
-      default: return 'muted';
-    }
-  };
-
   return (
-    <div className="glass-card h-full relative overflow-hidden">
+    // Add pt-16 (or adjust for your navbar height)
+    <div className="glass-card h-full relative overflow-hidden pt-16">
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 z-10 p-6 bg-gradient-to-b from-card/90 to-transparent">
         <div className="flex items-center justify-between">
@@ -33,7 +18,6 @@ const MapPlaceholder = ({ selectedBus, refreshTimer }: MapPlaceholderProps) => {
             <Map className="w-6 h-6 text-primary" />
             <h2 className="text-xl font-bold text-foreground">Live Tracking</h2>
           </div>
-          
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2 px-3 py-1 glass border border-card-border rounded-full">
               <Loader2 className="w-4 h-4 animate-spin text-primary" />
@@ -72,15 +56,13 @@ const MapPlaceholder = ({ selectedBus, refreshTimer }: MapPlaceholderProps) => {
               <Map className="w-12 h-12 text-primary-foreground" />
             </div>
           </motion.div>
-          
           <h3 className="text-2xl font-bold text-foreground mb-4">
             Live Map Integration Coming Soon
           </h3>
           <p className="text-muted-foreground mb-8 leading-relaxed">
-            Real-time GPS tracking with Google Maps integration will be available soon. 
+            Real-time GPS tracking with Google Maps integration will be available soon.
             Track your bus location, route progress, and estimated arrival times on an interactive map.
           </p>
-
           <div className="space-y-4">
             <div className="text-left">
               <h4 className="font-semibold text-foreground mb-3">Upcoming Features:</h4>
@@ -107,44 +89,7 @@ const MapPlaceholder = ({ selectedBus, refreshTimer }: MapPlaceholderProps) => {
         </div>
       </div>
 
-      {/* Bus Stops Preview */}
-      {selectedBus && (
-        <div className="absolute bottom-6 left-6 right-6">
-          <div className="glass border border-card-border rounded-xl p-4">
-            <h4 className="font-semibold text-foreground mb-3">Route Stops</h4>
-            <div className="flex justify-between items-center">
-              {busStops.map((stop, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="flex flex-col items-center"
-                >
-                  <div className={`w-4 h-4 rounded-full bg-${getStopColor(stop.type)} mb-2 ${
-                    stop.type === 'current' ? 'animate-pulse-glow' : ''
-                  }`} />
-                  <span className="text-xs text-muted-foreground text-center max-w-[80px] truncate">
-                    {stop.name}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-            
-            {/* Progress Line */}
-            <div className="mt-4 relative">
-              <div className="h-1 bg-muted rounded-full">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${selectedBus.progress}%` }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  className="h-1 bg-gradient-to-r from-success to-primary rounded-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* No Route Stops or progress bar! */}
     </div>
   );
 };

@@ -27,7 +27,8 @@ const DriverContactModal = ({ driver, onClose }: DriverContactModalProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      // TOP-ALIGN the modal for dashboard consistent layout
+      className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-start justify-center pt-24 p-4"
       onClick={onClose}
     >
       <motion.div
@@ -37,6 +38,7 @@ const DriverContactModal = ({ driver, onClose }: DriverContactModalProps) => {
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-md glass-card border border-card-border"
       >
+        {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-card-border">
           <h2 className="text-xl font-bold text-foreground">Contact Driver</h2>
           <Button variant="ghost" size="sm" onClick={onClose}>
@@ -52,10 +54,8 @@ const DriverContactModal = ({ driver, onClose }: DriverContactModalProps) => {
                 {driver.name.split(' ').map(n => n[0]).join('')}
               </span>
             </div>
-            
             <h3 className="text-xl font-bold text-foreground mb-2">{driver.name}</h3>
             <p className="text-muted-foreground mb-4">{driver.experience} of experience</p>
-            
             {/* Rating */}
             <div className="flex items-center justify-center space-x-1 mb-4">
               {[1, 2, 3, 4, 5].map((star) => (

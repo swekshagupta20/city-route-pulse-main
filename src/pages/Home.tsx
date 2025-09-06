@@ -144,7 +144,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-blue-100">
       <Navbar
         darkMode={darkMode}
         toggleDarkMode={() => setDarkMode(!darkMode)}

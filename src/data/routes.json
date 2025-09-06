@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ROUTE001",
+    "name": "Sector 10 → Central Station",
+    "busNumbers": ["42A", "42B"],
+    "averageTime": "40 mins",
+    "frequency": "Every 8 mins",
+    "status": "On Time",
+    "popularity": 95,
+    "distance": "28 km"
+  },
+  {
+    "id": "ROUTE002", 
+    "name": "Airport → City Center",
+    "busNumbers": ["15A", "15B"],
+    "averageTime": "55 mins",
+    "frequency": "Every 12 mins",
+    "status": "Delayed",
+    "popularity": 88,
+    "distance": "31 km"
+  },
+  {
+    "id": "ROUTE003",
+    "name": "University → Tech Park", 
+    "busNumbers": ["78C", "78D"],
+    "averageTime": "45 mins",
+    "frequency": "Every 10 mins",
+    "status": "On Time",
+    "popularity": 92,
+    "distance": "25 km"
+  },
+  {
+    "id": "ROUTE004",
+    "name": "Mall Road → Metro Station",
+    "busNumbers": ["33A", "33B"],
+    "averageTime": "25 mins", 
+    "frequency": "Every 6 mins",
+    "status": "On Time",
+    "popularity": 97,
+    "distance": "18 km"
+  }
+]

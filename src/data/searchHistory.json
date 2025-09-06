@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "query": "42A",
+    "type": "bus",
+    "timestamp": "2024-01-15T14:30:00Z"
+  },
+  {
+    "id": 2, 
+    "query": "Sector 10 to Central Station",
+    "type": "route",
+    "timestamp": "2024-01-15T13:45:00Z"
+  },
+  {
+    "id": 3,
+    "query": "Airport Terminal",
+    "type": "stop",
+    "timestamp": "2024-01-15T12:20:00Z"
+  },
+  {
+    "id": 4,
+    "query": "15B Metro Link",
+    "type": "bus", 
+    "timestamp": "2024-01-15T11:15:00Z"
+  },
+  {
+    "id": 5,
+    "query": "University Campus",
+    "type": "stop",
+    "timestamp": "2024-01-15T10:30:00Z"
+  }
+]

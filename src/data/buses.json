@@ -1,0 +1,86 @@
+[
+  {
+    "id": "BUS001",
+    "busNumber": "42A",
+    "busName": "City Express",
+    "route": {
+      "source": "Sector 10 Hub",
+      "destination": "Central Station",
+      "via": "Sector 25, Mall Road, University"
+    },
+    "currentStatus": "On Time",
+    "progress": 65,
+    "distanceCovered": 18.2,
+    "totalDistance": 28.0,
+    "timeElapsed": 25,
+    "estimatedTimeRemaining": 15,
+    "eta": "3:45 PM",
+    "delayMinutes": 0,
+    "driver": {
+      "name": "Rajesh Kumar",
+      "phone": "+91 98765 43210",
+      "experience": "8 years"
+    },
+    "currentLocation": {
+      "lat": 28.7041,
+      "lng": 77.1025,
+      "nearestStop": "Mall Road Junction"
+    }
+  },
+  {
+    "id": "BUS002",
+    "busNumber": "15B",
+    "busName": "Metro Link",
+    "route": {
+      "source": "Airport Terminal",
+      "destination": "City Center",
+      "via": "Business District, Hotel Zone"
+    },
+    "currentStatus": "Delayed",
+    "progress": 40,
+    "distanceCovered": 12.5,
+    "totalDistance": 31.2,
+    "timeElapsed": 35,
+    "estimatedTimeRemaining": 25,
+    "eta": "4:10 PM",
+    "delayMinutes": 8,
+    "driver": {
+      "name": "Suresh Sharma",
+      "phone": "+91 98765 43211",
+      "experience": "12 years"
+    },
+    "currentLocation": {
+      "lat": 28.5562,
+      "lng": 77.1000,
+      "nearestStop": "Business District"
+    }
+  },
+  {
+    "id": "BUS003",
+    "busNumber": "78C",
+    "busName": "Green Line",
+    "route": {
+      "source": "University Campus",
+      "destination": "Tech Park",
+      "via": "Student Hub, IT Corridor"
+    },
+    "currentStatus": "On Time",
+    "progress": 85,
+    "distanceCovered": 21.25,
+    "totalDistance": 25.0,
+    "timeElapsed": 40,
+    "estimatedTimeRemaining": 8,
+    "eta": "3:58 PM",
+    "delayMinutes": 0,
+    "driver": {
+      "name": "Amit Verma",
+      "phone": "+91 98765 43212",
+      "experience": "5 years"
+    },
+    "currentLocation": {
+      "lat": 28.4595,
+      "lng": 77.0266,
+      "nearestStop": "IT Corridor Gate 2"
+    }
+  }
+]

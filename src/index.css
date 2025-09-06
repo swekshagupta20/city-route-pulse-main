@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern Bus Tracking Design System */
+    --background: 248 250 252 1; /* slate-50 */
+    --foreground: 15 23 42 1; /* slate-800 */
+
+    /* Glass Cards */
+    --card: 255 255 255 0.8; /* Semi-transparent white */
+    --card-foreground: 15 23 42 1;
+    --card-border: 255 255 255 0.2;
+
+    /* Popover */
+    --popover: 255 255 255 0.95;
+    --popover-foreground: 15 23 42 1;
+
+    /* Primary - Blue */
+    --primary: 37 99 235 1; /* blue-600 */
+    --primary-foreground: 248 250 252 1;
+    --primary-glow: 59 130 246 0.5; /* blue-500 with transparency */
+
+    /* Secondary - Emerald */
+    --secondary: 16 185 129 1; /* emerald-500 */
+    --secondary-foreground: 248 250 252 1;
+    --secondary-glow: 34 197 94 0.3;
+
+    /* Success/On-time */
+    --success: 34 197 94 1; /* green-500 */
+    --success-foreground: 248 250 252 1;
+
+    /* Warning/Delayed */
+    --warning: 245 158 11 1; /* amber-500 */
+    --warning-foreground: 15 23 42 1;
+
+    /* Danger/Emergency */
+    --danger: 239 68 68 1; /* red-500 */
+    --danger-foreground: 248 250 252 1;
+
+    /* Muted */
+    --muted: 241 245 249 1; /* slate-100 */
+    --muted-foreground: 100 116 139 1; /* slate-500 */
+
+    /* Accent */
+    --accent: 139 92 246 1; /* violet-500 */
+    --accent-foreground: 248 250 252 1;
+
+    /* Destructive */
+    --destructive: 239 68 68 1;
+    --destructive-foreground: 248 250 252 1;
+
+    /* Borders & Inputs */
+    --border: 226 232 240 1; /* slate-200 */
+    --input: 241 245 249 1;
+    --ring: 37 99 235 0.3;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(37 99% 235% 1), hsl(59 130% 246% 1));
+    --gradient-secondary: linear-gradient(135deg, hsl(16 185% 129% 1), hsl(34 197% 94% 1));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+
+    /* Shadows */
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --shadow-primary: 0 10px 30px -10px hsl(37 99% 235% / 0.3);
+    --shadow-secondary: 0 10px 30px -10px hsl(16 185% 129% / 0.3);
+
+    /* Glass Effects */
+    --glass-background: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-backdrop-filter: blur(16px) saturate(180%);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark Mode Colors */
+    --background: 15 23 42 1; /* slate-800 */
+    --foreground: 248 250 252 1;
+
+    /* Glass Cards - Dark */
+    --card: 30 41 59 0.8; /* slate-700 with transparency */
+    --card-foreground: 248 250 252 1;
+    --card-border: 255 255 255 0.1;
+
+    --popover: 30 41 59 0.95;
+    --popover-foreground: 248 250 252 1;
+
+    /* Primary - Brighter Blue for dark mode */
+    --primary: 59 130 246 1; /* blue-500 */
+    --primary-foreground: 15 23 42 1;
+    --primary-glow: 37 99 235 0.5;
+
+    /* Secondary - Emerald */
+    --secondary: 34 197 94 1; /* green-500 */
+    --secondary-foreground: 15 23 42 1;
+    --secondary-glow: 16 185 129 0.3;
+
+    /* Success */
+    --success: 34 197 94 1;
+    --success-foreground: 15 23 42 1;
+
+    /* Warning */
+    --warning: 251 191 36 1; /* amber-400 */
+    --warning-foreground: 15 23 42 1;
+
+    /* Danger */
+    --danger: 248 113 113 1; /* red-400 */
+    --danger-foreground: 15 23 42 1;
+
+    /* Muted */
+    --muted: 51 65 85 1; /* slate-600 */
+    --muted-foreground: 148 163 184 1; /* slate-400 */
+
+    /* Accent */
+    --accent: 167 139 250 1; /* violet-400 */
+    --accent-foreground: 15 23 42 1;
+
+    --destructive: 248 113 113 1;
+    --destructive-foreground: 15 23 42 1;
+
+    /* Borders & Inputs */
+    --border: 51 65 85 1; /* slate-600 */
+    --input: 30 41 59 1;
+    --ring: 59 130 246 0.3;
+
+    /* Glass Effects - Dark */
+    --glass-background: rgba(30, 41, 59, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-backdrop-filter: blur(16px) saturate(180%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+    min-height: 100vh;
+  }
+
+  /* Glass morphism utility classes */
+  .glass {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-backdrop-filter);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl p-6;
+  }
+
+  /* Progress thermometer styles */
+  .progress-thermometer {
+    background: linear-gradient(to bottom, 
+      hsl(var(--success)) 0%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--muted)) 100%);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}

@@ -59,105 +59,91 @@ const BusDetailsCard = ({ bus, onContactDriver }: BusDetailsCardProps) => {
       animate={{ opacity: 1, y: 0 }}
       className="glass-card"
     >
-      <div className="p-6">
+      <div className="p-5"> {/* slightly less padding for compactness */}
         {/* Header */}
-        <div className="flex items-start justify-between mb-6">
-          <div className="flex items-center space-x-4">
-            <div className="p-3 rounded-2xl bg-gradient-primary">
-              <Bus className="w-8 h-8 text-primary-foreground" />
+        <div className="flex items-start justify-between mb-5">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 rounded-2xl bg-gradient-primary">
+              <Bus className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-foreground">
-                {bus.busNumber}
-              </h2>
-              <p className="text-lg text-muted-foreground">{bus.busName}</p>
+              <h2 className="text-xl font-bold text-foreground leading-5">{bus.busNumber}</h2>
+              <p className="text-base text-muted-foreground leading-4">{bus.busName}</p>
             </div>
           </div>
-          
-          <div className={`flex items-center space-x-2 px-4 py-2 rounded-full bg-${getStatusColor(bus.currentStatus)}/20 border border-${getStatusColor(bus.currentStatus)}/30`}>
+
+          <div className={`flex items-center space-x-1 px-3 py-1 rounded-full bg-${getStatusColor(bus.currentStatus)}/20 border border-${getStatusColor(bus.currentStatus)}/30`}>
             <span className={`text-${getStatusColor(bus.currentStatus)}`}>
               {getStatusIcon(bus.currentStatus)}
             </span>
-            <span className={`font-semibold text-${getStatusColor(bus.currentStatus)}`}>
+            <span className={`font-semibold text-${getStatusColor(bus.currentStatus)} text-sm`}>
               {bus.currentStatus}
             </span>
           </div>
         </div>
 
         {/* Route Information */}
-        <div className="mb-6">
-          <div className="flex items-center space-x-3 mb-4">
-            <Route className="w-5 h-5 text-primary" />
-            <h3 className="font-semibold text-foreground">Route Details</h3>
+        <div className="mb-5">
+          <div className="flex items-center space-x-2 mb-2">
+            <Route className="w-4 h-4 text-primary" />
+            <h3 className="text-base font-semibold text-foreground">Route Details</h3>
           </div>
-          
-          <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 glass border border-card-border rounded-xl">
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 rounded-full bg-success"></div>
-                <span className="font-medium text-foreground">From</span>
-              </div>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between p-2 glass border border-card-border rounded-xl text-sm">
+              <span className="font-medium">From</span>
               <span className="text-muted-foreground">{bus.route.source}</span>
             </div>
-            
-            <div className="flex items-center justify-between p-3 glass border border-card-border rounded-xl">
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 rounded-full bg-primary"></div>
-                <span className="font-medium text-foreground">To</span>
-              </div>
+            <div className="flex items-center justify-between p-2 glass border border-card-border rounded-xl text-sm">
+              <span className="font-medium">To</span>
               <span className="text-muted-foreground">{bus.route.destination}</span>
             </div>
-            
-            <div className="p-3 glass border border-card-border rounded-xl">
-              <div className="flex items-center space-x-3 mb-2">
+            <div className="p-2 glass border border-card-border rounded-xl text-sm">
+              <div className="flex items-center space-x-2 mb-1">
                 <MapPin className="w-4 h-4 text-muted-foreground" />
-                <span className="font-medium text-foreground">Via</span>
+                <span className="font-medium">Via</span>
               </div>
-              <p className="text-muted-foreground ml-7">{bus.route.via}</p>
+              <span className="text-muted-foreground ml-5">{bus.route.via}</span>
             </div>
           </div>
         </div>
 
-        {/* Time & Distance Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div className="text-center p-4 glass border border-card-border rounded-xl">
-            <div className="text-2xl font-bold text-foreground">{bus.timeElapsed}</div>
-            <div className="text-sm text-muted-foreground">Minutes Elapsed</div>
+        {/* Stats */}
+        <div className="grid grid-cols-2 gap-2 mb-5">
+          <div className="text-center p-2 glass border border-card-border rounded-xl">
+            <div className="text-lg font-bold text-foreground">{bus.timeElapsed}</div>
+            <div className="text-xs text-muted-foreground">Minutes Elapsed</div>
           </div>
-          
-          <div className="text-center p-4 glass border border-card-border rounded-xl">
-            <div className="text-2xl font-bold text-primary">{bus.estimatedTimeRemaining}</div>
-            <div className="text-sm text-muted-foreground">Minutes Remaining</div>
+          <div className="text-center p-2 glass border border-card-border rounded-xl">
+            <div className="text-lg font-bold text-primary">{bus.estimatedTimeRemaining}</div>
+            <div className="text-xs text-muted-foreground">Minutes Remaining</div>
           </div>
-          
-          <div className="text-center p-4 glass border border-card-border rounded-xl">
-            <div className="text-2xl font-bold text-foreground">{bus.distanceCovered}km</div>
-            <div className="text-sm text-muted-foreground">Distance Covered</div>
+          <div className="text-center p-2 glass border border-card-border rounded-xl">
+            <div className="text-lg font-bold text-foreground">{bus.distanceCovered}km</div>
+            <div className="text-xs text-muted-foreground">Distance Covered</div>
           </div>
-          
-          <div className="text-center p-4 glass border border-card-border rounded-xl">
-            <div className="text-2xl font-bold text-secondary">{bus.eta}</div>
-            <div className="text-sm text-muted-foreground">Expected Arrival</div>
+          <div className="text-center p-2 glass border border-card-border rounded-xl">
+            <div className="text-lg font-bold text-secondary">{bus.eta}</div>
+            <div className="text-xs text-muted-foreground">Expected Arrival</div>
           </div>
         </div>
 
         {/* Current Location */}
-        <div className="mb-6 p-4 glass border border-card-border rounded-xl">
-          <div className="flex items-center space-x-3 mb-2">
-            <MapPin className="w-5 h-5 text-primary" />
-            <h4 className="font-semibold text-foreground">Current Location</h4>
+        <div className="mb-4 p-2 glass border border-card-border rounded-xl text-sm">
+          <div className="flex items-center space-x-2 mb-1">
+            <MapPin className="w-4 h-4 text-primary" />
+            <h4 className="font-semibold text-base text-foreground">Current Location</h4>
           </div>
-          <p className="text-muted-foreground ml-8">{bus.currentLocation.nearestStop}</p>
-          <div className="mt-3 ml-8">
+          <p className="ml-6 text-muted-foreground">{bus.currentLocation.nearestStop}</p>
+          <div className="ml-6 mt-2">
             <div className="w-full bg-muted rounded-full h-2">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${bus.progress}%` }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className={`h-2 bg-gradient-to-r from-success to-primary rounded-full`}
+                className="h-2 bg-gradient-to-r from-success to-primary rounded-full"
               />
             </div>
-            <div className="flex justify-between text-sm text-muted-foreground mt-1">
+            <div className="flex justify-between text-xs text-muted-foreground mt-1">
               <span>{bus.progress}% Complete</span>
               <span>{bus.totalDistance - bus.distanceCovered}km remaining</span>
             </div>
@@ -169,13 +155,13 @@ const BusDetailsCard = ({ bus, onContactDriver }: BusDetailsCardProps) => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mb-6 p-4 bg-warning/20 border border-warning/30 rounded-xl"
+            className="mb-6 p-3 bg-warning/20 border border-warning/30 rounded-xl"
           >
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2">
               <AlertCircle className="w-5 h-5 text-warning" />
               <div>
-                <p className="font-semibold text-warning">Service Delay</p>
-                <p className="text-sm text-warning/80">
+                <p className="font-semibold text-warning text-sm">Service Delay</p>
+                <p className="text-xs text-warning/80">
                   This bus is running {bus.delayMinutes} minutes behind schedule
                 </p>
               </div>
@@ -184,17 +170,17 @@ const BusDetailsCard = ({ bus, onContactDriver }: BusDetailsCardProps) => {
         )}
 
         {/* Driver Contact */}
-        <div className="flex items-center justify-between p-4 glass border border-card-border rounded-xl">
+        <div className="flex items-center justify-between p-2 glass border border-card-border rounded-xl text-sm">
           <div>
             <p className="font-semibold text-foreground">Driver: {bus.driver.name}</p>
-            <p className="text-sm text-muted-foreground">{bus.driver.experience} experience</p>
+            <p className="text-xs text-muted-foreground">{bus.driver.experience} experience</p>
           </div>
           <Button
             onClick={() => onContactDriver(bus.driver)}
             variant="outline"
             size="sm"
           >
-            <Phone className="w-4 h-4 mr-2" />
+            <Phone className="w-4 h-4 mr-1" />
             Contact
           </Button>
         </div>

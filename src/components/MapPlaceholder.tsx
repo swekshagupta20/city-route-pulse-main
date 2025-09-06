@@ -9,8 +9,7 @@ interface MapPlaceholderProps {
 
 const MapPlaceholder = ({ selectedBus, refreshTimer }: MapPlaceholderProps) => {
   return (
-    // Add pt-16 (or adjust for your navbar height)
-    <div className="glass-card h-full relative overflow-hidden pt-16">
+    <div className="glass-card h-full min-h-[600px] relative overflow-hidden pt-16">
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 z-10 p-6 bg-gradient-to-b from-card/90 to-transparent">
         <div className="flex items-center justify-between">
@@ -88,8 +87,6 @@ const MapPlaceholder = ({ selectedBus, refreshTimer }: MapPlaceholderProps) => {
           </div>
         </div>
       </div>
-
-      {/* No Route Stops or progress bar! */}
     </div>
   );
 };

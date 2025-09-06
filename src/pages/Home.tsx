@@ -33,12 +33,11 @@ const Home = () => {
     const timer = setInterval(() => {
       setRefreshTimer((prev) => {
         if (prev <= 1) {
-          // Refresh data
           addNotification({
             type: 'info',
             title: 'Data Refreshed',
             message: 'Bus tracking information has been updated',
-            autoClose: true
+            autoClose: true,
           });
           return 180;
         }
@@ -65,14 +64,14 @@ const Home = () => {
         type: 'warning' as const,
         title: 'Service Update',
         message: 'Bus 15B is running 8 minutes behind schedule due to traffic',
-        autoClose: true
+        autoClose: true,
       },
       {
         type: 'success' as const,
         title: 'Route Active',
         message: 'Bus 42A is now being tracked. ETA: 15 minutes',
-        autoClose: true
-      }
+        autoClose: true,
+      },
     ];
 
     sampleNotifications.forEach((notif, index) => {
@@ -84,23 +83,24 @@ const Home = () => {
     const newNotification: Notification = {
       ...notification,
       id: Math.random().toString(36).substr(2, 9),
-      timestamp: new Date()
+      timestamp: new Date(),
     };
-    
-    setNotifications(prev => [newNotification, ...prev].slice(0, 5));
+
+    setNotifications((prev) => [newNotification, ...prev].slice(0, 5));
   };
 
   const dismissNotification = (id: string) => {
-    setNotifications(prev => prev.filter(notif => notif.id !== id));
+    setNotifications((prev) => prev.filter((notif) => notif.id !== id));
   };
 
   const handleSearch = (query: string) => {
     // Find matching bus
-    const matchingBus = busesData.find(bus => 
-      bus.busNumber.toLowerCase().includes(query.toLowerCase()) ||
-      bus.busName.toLowerCase().includes(query.toLowerCase()) ||
-      bus.route.source.toLowerCase().includes(query.toLowerCase()) ||
-      bus.route.destination.toLowerCase().includes(query.toLowerCase())
+    const matchingBus = busesData.find(
+      (bus) =>
+        bus.busNumber.toLowerCase().includes(query.toLowerCase()) ||
+        bus.busName.toLowerCase().includes(query.toLowerCase()) ||
+        bus.route.source.toLowerCase().includes(query.toLowerCase()) ||
+        bus.route.destination.toLowerCase().includes(query.toLowerCase())
     );
 
     if (matchingBus) {
@@ -113,7 +113,7 @@ const Home = () => {
       toast({
         title: "No Results",
         description: "No buses found matching your search. Try a different query.",
-        variant: "destructive"
+        variant: "destructive",
       });
     }
   };
@@ -128,11 +128,12 @@ const Home = () => {
 
   const handleTrackRoute = (routeId: string) => {
     // Find first bus for this route
-    const routeBus = busesData.find(bus => 
-      bus.route.source.includes('Sector 10') || 
-      bus.route.destination.includes('Central Station')
+    const routeBus = busesData.find(
+      (bus) =>
+        bus.route.source.includes('Sector 10') ||
+        bus.route.destination.includes('Central Station')
     );
-    
+
     if (routeBus) {
       setSelectedBus(routeBus);
       toast({
@@ -154,33 +155,36 @@ const Home = () => {
       {/* Main Content */}
       <main className="pt-20 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Live Tracking Map - Moved to top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-8 min-h-[400px]"
-          >
-            <MapPlaceholder 
-              selectedBus={selectedBus}
-              refreshTimer={refreshTimer}
-            />
-          </motion.div>
-
-          {/* Bus Details Card */}
-          {selectedBus && (
+          {/* Side by Side: Live Tracking & Bus Details Card */}
+          <div className="flex flex-col lg:flex-row items-start gap-8 mb-8">
+            {/* Live Tracking Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-8"
+              transition={{ delay: 0.1 }}
+              className="flex-1 w-full"
             >
-              <BusDetailsCard
-                bus={selectedBus}
-                onContactDriver={handleContactDriver}
+              <MapPlaceholder
+                selectedBus={selectedBus}
+                refreshTimer={refreshTimer}
               />
             </motion.div>
-          )}
+
+            {/* Bus Details Card */}
+            {selectedBus && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="w-full lg:w-[420px]"
+              >
+                <BusDetailsCard
+                  bus={selectedBus}
+                  onContactDriver={handleContactDriver}
+                />
+              </motion.div>
+            )}
+          </div>
 
           {/* Main Dashboard Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
